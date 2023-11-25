@@ -1,0 +1,22 @@
+body{
+    background: #eeedec;
+    letter-spacing: 0.2em;
+    font-size: 0.8em;
+  }
+  .container{
+    max-width: 400px;
+  }
+  .feels_like{
+    font-size: medium;
+
+  }
+  .icon{
+    position: relative;
+    border-radius: 50px;
+    width: 100px;
+    top: -20px;
+    margin-bottom: -20px;
+  }
+  .time{
+      height: 400px;
+  }
