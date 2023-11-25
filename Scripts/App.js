@@ -34,7 +34,7 @@ const UpdateUI =  async (data) => {
         <span>feels like ${weatherData.feelslike_c}</span>
         <span>&deg;C</span>
         </div>`;
-        console.log("updated the data to html and calling the Icon function");
+        console.log("updated the "+citydata.name+" data to html and calling the Icon function");
    const iconUpdate= await UpdateIcon(weatherData.condition.icon);
     if (UI.classList.contains('d-none')) {
         UI.classList.remove('d-none')
@@ -45,7 +45,7 @@ const UpdateUI =  async (data) => {
 //get city weather
 const WeatherData = async (city) => {
     const getCityWeatherData = await getCityWeather(city);
-    console.log("fetched the data from API");
+    console.log("fetched the data of "+city+" from API");
     return getCityWeatherData;
 }
 
