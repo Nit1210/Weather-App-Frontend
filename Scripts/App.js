@@ -34,7 +34,7 @@ const UpdateUI =  async (data) => {
         <span>feels like ${weatherData.feelslike_c}</span>
         <span>&deg;C</span>
         </div>`;
-        console.log("updated the "+citydata.name+" data to html and calling the Icon function");
+        console.log("Updated the "+citydata.name+" data to html and calling the Icon function");
    const iconUpdate= await UpdateIcon(weatherData.condition.icon);
     if (UI.classList.contains('d-none')) {
         UI.classList.remove('d-none')
@@ -56,12 +56,27 @@ cityForm.addEventListener('submit', async(e) => {
     //callinmg the function in forecast.js to get weather data
     try {
         const data = await WeatherData(city);
+        localStorage.setItem('city',city);
         UpdateUI(data).then(async (day)=>{
         const imageupdate= await UpdateImage(day);
         console.log(imageupdate);
     });
     } catch (err) {
         console.log(err);
+        alert(err);
     }
+    //setting local storage
+    
 });
 
+if(localStorage.getItem('city')){
+    WeatherData(localStorage.getItem('city'))
+    .then((data)=>UpdateUI(data)
+    .then(day=>UpdateImage(day))
+    .catch((err)=>{
+        console.log();
+        alert(err);
+    
+    }))
+
+}
