@@ -1,4 +1,4 @@
-Weather App:
+Weather App
 This is a simple weather application built with HTML, Bootstrap, and JavaScript. The app allows users to check the current weather conditions for a specific city. The project is organized into three main files:
 
 `App.js`:
@@ -22,4 +22,5 @@ This HTML file defines the structure of the weather app, including form input fo
 
 
 Feel free to clone or fork this repository and customize it for your needs. For any issues or improvements, please open an issue or submit a pull request.
+
 
