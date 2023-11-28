@@ -1,6 +1,6 @@
 # Weather App
 
-## This is a simple weather application built with HTML, Bootstrap, and JavaScript. The app allows users to check the current weather conditions for a specific city. The project is organized into three main files:
+### This is a simple weather application built with HTML, Bootstrap, and JavaScript. The app allows users to check the current weather conditions for a specific city. The project is organized into three main files:
 
 ### `App.js`:
 #### This file contains the client-side logic for updating the UI based on the weather data fetched from the WeatherAPI. Here's a breakdown of the key functionalities:
