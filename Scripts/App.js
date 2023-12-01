@@ -3,6 +3,7 @@ const UI = document.querySelector('.card');
 const weatherImage = document.querySelector('.time');
 const updateDetails = document.querySelector(".details");
 const weatherIcon = document.querySelector(".icon img");
+const forecast= new Forecast();
 //update UI
 //update weather image
 
@@ -44,7 +45,7 @@ const UpdateUI =  async (data) => {
 
 //get city weather
 const WeatherData = async (city) => {
-    const getCityWeatherData = await getCityWeather(city);
+    const getCityWeatherData = await forecast.getCityWeather(city);
     console.log("fetched the data of "+city+" from API");
     return getCityWeatherData;
 }
