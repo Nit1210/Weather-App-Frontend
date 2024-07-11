@@ -1,6 +1,6 @@
 class Forecast{
     constructor(){
-         const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
+         const API_KEY = "11880f3c706c43e9be1170935242504";
     }
     
     async  getCityWeather(city) {
