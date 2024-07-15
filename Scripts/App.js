@@ -3,7 +3,6 @@ const UI = document.querySelector('.card');
 const weatherImage = document.querySelector('.time');
 const updateDetails = document.querySelector(".details");
 const weatherIcon = document.querySelector(".icon img");
-const forecast= new Forecast();
 //update UI
 //update weather image
 
@@ -25,17 +24,18 @@ UpdateIcon = async (icon) => {
 //update Weather data
 const UpdateUI =  async (data) => {
     const { citydata, weatherData } = data;
+    console.log(data)
     updateDetails.innerHTML = `
       <h5 class="my-3">${citydata.name}, ${citydata.region}</h5>
       <div class="my-3">${weatherData.condition.text}</div>
       <div class="display-4 my-4">
-        <span>${weatherData.temp_c}</span>
-        <span>&deg;C</span>
+        <span>${weatherData.temp_f}</span>
+        <span>&deg;F</span>
      <div class="feels_like">
-        <span>feels like ${weatherData.feelslike_c}</span>
-        <span>&deg;C</span>
+        <span>feels like ${weatherData.feelslike_f}</span>
+        <span>&deg;F</span>
         </div>`;
-        console.log("Updated the "+citydata.name+" data to html and calling the Icon function");
+        console.log("Updated the "+citydata.Name+" data to html and calling the Icon function");
    const iconUpdate= await UpdateIcon(weatherData.condition.icon);
     if (UI.classList.contains('d-none')) {
         UI.classList.remove('d-none')
@@ -45,9 +45,14 @@ const UpdateUI =  async (data) => {
 
 //get city weather
 const WeatherData = async (city) => {
-    const getCityWeatherData = await forecast.getCityWeather(city);
+    const getCityWeatherData = await fetch(`https://weather-app-backend-l8c5.onrender.com/api/weather?city=${city}`);
+    if(!getCityWeatherData.ok){
+        throw new Error ("Error fetching the data");
+    }
+    const data=await getCityWeatherData.json();
     console.log("fetched the data of "+city+" from API");
-    return getCityWeatherData;
+    console.log(data)
+    return {citydata:data.citydata,weatherData:data.weatherData };
 }
 
 cityForm.addEventListener('submit', async(e) => {
@@ -62,7 +67,7 @@ cityForm.addEventListener('submit', async(e) => {
         const imageupdate= await UpdateImage(day);
         console.log(imageupdate);
     });
-    } catch (err) {
+    } catch (err) {  
         console.log(err);
         alert(err);
     }
